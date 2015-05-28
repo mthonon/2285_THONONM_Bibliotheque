@@ -6,10 +6,10 @@ $livres = $data['data02'];
 		<div class="menuPrinc">
 			<ul>
 				<li><a href="index.php" class="passif">Accueil</a></li>
-				<li><a href="index.php?a=viewAuteurs&e=posts" class="passif">Auteurs</a></li>
-				<li><a href="index.php?a=viewEditions&e=posts" class="passif">Edition</a></li>
-				<li><a href="index.php?a=viewGenre&e=posts" class="actif">Genre</a></li>
-				<li><a href="index.php?a=viewEmplacement&e=posts" class="passif">Emplacement</a></li
+				<li><a href="auteurs.html" class="passif">Auteurs</a></li>
+				<li><a href="edition.html"class="passif">Edition</a></li>
+				<li><a href="genre.html"class="actif">Genre</a></li>
+				<li><a href="emplacement.html"class="passif">Emplacement</a></li>
 				<li><a href="index.php?varAccesPage=connection"class="passif">Profil</a></li>
 			</ul>
 		</div>
