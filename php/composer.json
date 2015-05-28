@@ -1,0 +1,18 @@
+{
+  "name": "michelle/miniblog",
+  "description": "Une architecture autour d’un miniblog",
+  "authors": [
+    {
+      "name": "Michelle Thonon",
+      "email": "michelle.thonon@mail.be"
+    }
+  ],
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Controllers\\": "controllers/",
+      "Models\\": "models/"
+    }
+  }
+}

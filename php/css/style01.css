@@ -1,0 +1,217 @@
+@font-face { 
+  font-family: 'Britannic'; 
+  src: url('../BritannicBold.ttf');
+
+}
+*{
+	margin: 0;
+	padding: 0;
+	font-family:'Britannic';
+	list-style: none;
+	text-decoration: none; 
+}
+.enTete{
+	background-color: black;
+	color: white;
+	padding: 15px 90px;
+}
+body{
+	background-image: url(../img/wood.jpg);
+	background-attachment: fixed;
+	
+}
+.titrePrinc{
+	display: inline;
+	font-size: 46px;
+}
+form.formRecherche{
+	display: inline;
+	float: right;
+	margin-top:15px ;/**/
+}
+form.formRecherche input{
+	font-size: 16px;; /**/
+}
+ .titrePrinc span {
+	color: #f38820;
+}
+
+
+.menuLongeur{
+	background-color: rgba(0, 0, 0, 0.65);
+}
+.menuPrinc{
+	width: 980px; /**/
+	margin: auto;
+	padding: 5px 0;/**/
+}
+
+.menuPrinc li  {
+	display: inline-block;
+	font-size: 23px; /**/
+	width: 158.33px;
+	text-align: center;
+}
+
+a.passif{
+	text-decoration: none;
+	color: white;
+}
+a.actif{
+	color:  #f38820;
+	
+}
+.menuPrinc li a:hover{
+	color:  #f38820;
+} 
+
+
+.contener{
+	width: 890px;/**/
+	background: rgba(255,255,265, 0.6);
+	margin: auto;
+	padding: 10px 45px 10px 61px; /**/
+}
+ul.auteurMois{
+	margin-bottom: 25px;
+}
+ul.auteurMois li {
+	width: 376px;
+	display: inline-block;
+	margin-right: 66px;	
+}
+
+ul.auteurMois li p{
+	font-family: helvetica,verdana,arial;
+    line-height: 27px;
+    text-align: justify;
+}
+h2{
+	margin:25px 0 20px 0;/**/
+	font-size: 30px; /**/
+}
+h3{
+	margin-bottom: 15px;/**/
+	font-size:25px;/**/
+	font-family: 'Oswald', bold;
+	color: #f38820;;
+}
+
+
+ div.menu02{
+ 	background-color: rgba(0, 0, 0, 0.65);
+ 	width: 30px;
+ 	float: left;
+ 	margin-left: 200px;
+ 	padding: 20px;
+ 	color: white;
+ 	text-align: center;
+ }
+div.menu02 ul li a{
+	color: white;
+}
+div.menu02 ul li a:hover{
+	
+	color: #f38820;
+}
+div.menu02Genre{
+ 	background-color: rgba(0, 0, 0, 0.65);
+ 	
+ 	float: left;
+ 	margin-left: 70px;
+ 	padding: 20px;
+ 	color: white;
+ 	
+ }
+ div.menu02Genre ul li a{
+	color: white;
+}
+div.menu02Genre ul li a:hover{
+	
+	color: #f38820;
+}
+
+div.menu02Edit{
+ 	background-color: rgba(0, 0, 0, 0.65);
+ 	
+ 	float: left;
+ 	margin-left: 135px;
+ 	padding: 20px;
+ 	color: white;
+ 	
+ }
+ div.menu02Edit ul li a{
+	color: white;
+}
+div.menu02Edit ul li a:hover{
+	
+	color: #f38820;
+}
+
+hr{
+	margin: 0  0  5px 0 ;
+}
+
+div.menu02Emple{
+ 	background-color: rgba(0, 0, 0, 0.65);
+ 	
+ 	float: left;
+ 	margin-left: 60px;
+ 	padding: 20px;
+ 	color: white;
+ 	
+ }
+ div.menu02Emple ul li a{
+	color: white;
+}
+div.menu02Emple ul li a:hover{
+	
+	color: #f38820;
+}
+
+
+div.contener div.fiches {
+	background-color: rgba(0, 0, 0, 0.65);
+	color: white;
+	border-radius: 30px;
+	padding: 25px 25px 35px 25px; 
+}
+
+.contener div.fiches div.details {
+	width: 560px;
+	float: right;
+	margin-right: 100px;
+}
+
+.contener div.fiches div.details p {
+	width: 660px;
+	padding-bottom: 5px;
+	
+}
+.contener div.fiches div.details p a{
+	color: white;
+	font-family: helvetica, verdana,arial;
+}
+.contener div.fiches div.details p a:hover{
+	color: #f38820;
+}
+
+
+
+.contener a img {
+	margin-right: 16px;
+}
+
+
+.footer{
+	padding: 25px 48px;
+    width: 900px;
+	color: white;
+	margin: auto;
+	background-color: black;
+}
+.footer ul li {
+	width: 260px;
+	display:inline-block;
+
+}
