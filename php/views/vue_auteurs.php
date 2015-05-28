@@ -1,30 +1,30 @@
 <?php 
-$categorieList = $data['data'];
+$auteursList = $data['data'];
 $livres = $data['data02'];
 ?>
 	<div class="menuLongeur">
 		<div class="menuPrinc">
 			<ul>
 				<li><a href="index.php" class="passif">Accueil</a></li>
-				<li><a href="index.php?a=viewAuteurs&e=posts" class="passif">Auteurs</a></li>
+				<li><a href="index.php?a=viewAuteurs&e=posts" class="actif">Auteurs</a></li>
 				<li><a href="index.php?a=viewEditions&e=posts" class="passif">Edition</a></li>
-				<li><a href="index.php?a=viewGenre&e=posts" class="actif">Genre</a></li>
-				<li><a href="index.php?a=viewEmplacement&e=posts" class="passif">Emplacement</a></li
+				<li><a href="index.php?a=viewGenre&e=posts" class="passif">Genre</a></li>
+				<li><a href="index.php?a=viewEmplacement&e=posts" class="passif">Emplacement</a></li>
 				<li><a href="index.php?varAccesPage=connection"class="passif">Profil</a></li>
 			</ul>
 		</div>
 	</div>
 	<div class="menu02Genre">
 		<ul>
-			<?php foreach($categorieList as $genre): ?>
-				<li><a href="<?php echo "index.php?a=viewGenre&e=posts&genreId=".$genre['id']; ?>"><?php echo $genre['genre'];?></a></li>
+			<?php foreach($auteursList as $auteur): ?>
+				<li><a href="<?php echo "index.php?a=viewAuteurs&e=posts&auteursId=".$auteur['auteur']; ?>"><?php echo $auteur['auteur'];?></a></li>
 			<?php endforeach; ?>	
 		</ul>
 	</div>
 	<div class="contener">
 		<div class="divPrinc">
-	<h2>Genres :</h2>
-		<p id="a"><?php echo $genre['genre'];?> </p>
+	<h2>Auteurs :</h2>
+		<p id="a"><?php echo $auteur['auteur'];?> </p>
 		<hr/>
 		<?php 
 		if ($livres != '')
