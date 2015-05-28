@@ -1,5 +1,5 @@
 <?php 
-$categorieList = $data['data'];
+$editionsList = $data['data'];
 $livres = $data['data02'];
 ?>
 	<div class="menuLongeur">
@@ -7,8 +7,8 @@ $livres = $data['data02'];
 			<ul>
 				<li><a href="index.php" class="passif">Accueil</a></li>
 				<li><a href="index.php?a=viewAuteurs&e=posts" class="passif">Auteurs</a></li>
-				<li><a href="index.php?a=viewEditions&e=posts" class="passif">Edition</a></li>
-				<li><a href="index.php?a=viewGenre&e=posts" class="actif">Genre</a></li>
+				<li><a href="index.php?a=viewEditions&e=posts" class="actif">Edition</a></li>
+				<li><a href="index.php?a=viewGenre&e=posts" class="passif">Genre</a></li>
 				<li><a href="index.php?a=viewEmplacement&e=posts" class="passif">Emplacement</a></li
 				<li><a href="index.php?varAccesPage=connection"class="passif">Profil</a></li>
 			</ul>
@@ -16,15 +16,15 @@ $livres = $data['data02'];
 	</div>
 	<div class="menu02Genre">
 		<ul>
-			<?php foreach($categorieList as $genre): ?>
-				<li><a href="<?php echo "index.php?a=viewGenre&e=posts&genreId=".$genre['id']; ?>"><?php echo $genre['genre'];?></a></li>
+			<?php foreach($editionsList as $editions): ?>
+				<li><a href="<?php echo "index.php?a=viewEditions&e=posts&editionId=".$editions['id']; ?>"><?php echo $editions['maison'];?></a></li>
 			<?php endforeach; ?>	
 		</ul>
 	</div>
 	<div class="contener">
 		<div class="divPrinc">
 	<h2>Genres :</h2>
-		<p id="a"><?php echo $genre['genre'];?> </p>
+		<p id="a"><?php echo $editions['maison'];?> </p>
 		<hr/>
 		<?php 
 		if ($livres != '')
