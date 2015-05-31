@@ -5,12 +5,13 @@ class Posts extends Model
 	/*public public function nomFonc(){
 		
 	}*/
-	public function getlivres($dbConnexion) {
+	public function getlivres() {
 	$sql = 'SELECT * 
 			FROM livres  
 			ORDER BY livres.`date_create` DESC';
-	$res = $dbConnexion->query($sql);
-	return $res->fetchAll();
+	$pdost=$this-> connexion->query($sql);
+	$pdost->execute();
+	return $pdost->fetchAll();
 	}
 	public function getlivresMois() {
 		$sql = 'SELECT livres.`id`,livres.`titre`, livres.`auteur`, livres.`annee_edit`, livres.`genre_id`, livres.`maison_edit_id`, livres.`emplacement_id`, livres.`date_create`, livres.`resume`, livres.`vignette`, categories.`genre` as nom_categorie,  emplacement.`emplacement` as nom_emplacement, edition.`maison` as nom_maisonEdit
@@ -24,6 +25,17 @@ class Posts extends Model
 		$pdost->execute();
 		return $pdost->fetchAll();
 	}
+	public function getlivreFiche($wheresql) {
+		$sql = "SELECT livres.`id`,livres.`titre`, livres.`auteur`, livres.`annee_edit`, livres.`genre_id`, livres.`maison_edit_id`, livres.`emplacement_id`, livres.`date_create`, livres.`resume`, livres.`vignette`, categories.`genre` as nom_categorie,  emplacement.`emplacement` as nom_emplacement, edition.`maison` as nom_maisonEdit
+				FROM livres  
+				JOIN categories ON categories.`id`= livres.`genre_id`
+				JOIN edition ON edition.`id`= livres.`maison_edit_id`
+				JOIN emplacement ON emplacement.`id`= livres.`emplacement_id`
+				WHERE livres.`id` =".$wheresql;
+		$pdost=$this-> connexion->query($sql);
+		$pdost->execute();
+		return $pdost->fetchAll();
+	}
 	public function getlivresCateg($wheresql) {
 		$sql = "SELECT livres.`id`,livres.`titre`, livres.`auteur`, livres.`annee_edit`, livres.`genre_id`, livres.`maison_edit_id`, livres.`emplacement_id`, livres.`date_create`, livres.`resume`, livres.`vignette`, categories.`genre` as nom_categorie,  emplacement.`emplacement` as nom_emplacement, edition.`maison` as nom_maisonEdit 
 				FROM livres 
@@ -31,6 +43,17 @@ class Posts extends Model
 				JOIN edition ON edition.`id`= livres.`maison_edit_id`
 				JOIN emplacement ON emplacement.`id`= livres.`emplacement_id`
 				WHERE livres.`genre_id` =".$wheresql.' ORDER BY livres.`date_create` DESC';
+		$pdost=$this-> connexion->query($sql);
+		$pdost->execute();
+		return $pdost->fetchAll();
+	}
+	public function getlivresDateEdit($wheresql) {
+		$sql = "SELECT livres.`id`,livres.`titre`, livres.`auteur`, livres.`annee_edit`, livres.`genre_id`, livres.`maison_edit_id`, livres.`emplacement_id`, livres.`date_create`, livres.`resume`, livres.`vignette`, categories.`genre` as nom_categorie,  emplacement.`emplacement` as nom_emplacement, edition.`maison` as nom_maisonEdit 
+				FROM livres 
+				JOIN categories ON categories.`id`= livres.`genre_id`
+				JOIN edition ON edition.`id`= livres.`maison_edit_id`
+				JOIN emplacement ON emplacement.`id`= livres.`emplacement_id`
+				WHERE livres.`annee_edit` =".$wheresql.' ORDER BY livres.`date_create` DESC';
 		$pdost=$this-> connexion->query($sql);
 		$pdost->execute();
 		return $pdost->fetchAll();
@@ -63,17 +86,18 @@ class Posts extends Model
 				JOIN categories ON categories.`id`= livres.`genre_id`
 				JOIN edition ON edition.`id`= livres.`maison_edit_id`
 				JOIN emplacement ON emplacement.`id`= livres.`emplacement_id`
-				WHERE livres.`auteur` =".$wheresql.' ORDER BY livres.`date_create` DESC';
+				WHERE livres.`auteur` ='".$wheresql."'".' ORDER BY livres.`date_create` DESC';
 		$pdost=$this-> connexion->query($sql);
 		$pdost->execute();
 		return $pdost->fetchAll();
 	}
-	public function getlogin($dbConnexion, $email, $password){
+	public function getlogin($email, $password){
 		$sql = "SELECT users.`id`,users.`email`, users.`password`
 				FROM users
 				WHERE users.`email` = '".$email. "' AND users.`password` = '".$password."'";
-		$res = $dbConnexion->query($sql);
-		return $res->fetchAll();
+		$pdost=$this-> connexion->query($sql);
+		$pdost->execute();
+		return $pdost->fetchAll();
 	}
 
 	public function createLivre($dbConnexion, $titre, $auteur, $annee_edition, $genre, $emplacement, $maison_edition, $resume, $path2 ) {
@@ -105,16 +129,18 @@ class Posts extends Model
 	}
 
 
-	public function deleteLivre($dbConnexion, $messageId) {
+	public function deleteLivre($messageId) {
 		$sql = "DELETE FROM livres WHERE livres.`id` = ".$messageId;
-		$res = $dbConnexion->query($sql);
-		return;
+		$pdost=$this-> connexion->query($sql);
+		$pdost->execute();
+		return $pdost->fetchAll();
 	}
 
-	public function updateMessage($dbConnexion, $messageId, $body, $category) {
+	public function updateMessage($messageId, $body, $category) {
 		$sql = 'UPDATE livres SET livres.`body` = "'.$body.'", livres.`category` = "'.$category.'" WHERE livres.`id` = '.$messageId;
-		$res = $dbConnexion->query($sql);
-		return;
+		$pdost=$this-> connexion->query($sql);
+		$pdost->execute();
+		return $pdost->fetchAll();
 	}
 
 	public function getCategories(){
@@ -131,6 +157,27 @@ class Posts extends Model
 	}
 	public function getEmplacement(){
 		$sql = 'SELECT emplacement.`id`, emplacement.`emplacement` FROM emplacement ORDER BY emplacement.`emplacement`';
+		$pdost=$this-> connexion->query($sql);
+		$pdost->execute();
+		return $pdost->fetchAll();
+	}
+	public function getEmplacementLibel($wheresql){
+		$sql = "SELECT emplacement.`emplacement` FROM emplacement
+				WHERE emplacement.`id` =".$wheresql;
+		$pdost=$this-> connexion->query($sql);
+		$pdost->execute();
+		return $pdost->fetchAll();
+	}
+	public function getGenreLibel($wheresql){
+		$sql = "SELECT categories.`genre` FROM categories
+				WHERE categories.`id` =".$wheresql;
+		$pdost=$this-> connexion->query($sql);
+		$pdost->execute();
+		return $pdost->fetchAll();
+	}
+	public function getEditionLibel($wheresql){
+		$sql = "SELECT edition.`maison` FROM edition
+				WHERE edition.`id` =".$wheresql;
 		$pdost=$this-> connexion->query($sql);
 		$pdost->execute();
 		return $pdost->fetchAll();

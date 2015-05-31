@@ -1,6 +1,7 @@
 <?php 
 $editionsList = $data['data'];
 $livres = $data['data02'];
+$oEditionId=$data['data03'];
 ?>
 	<div class="menuLongeur">
 		<div class="menuPrinc">
@@ -9,7 +10,7 @@ $livres = $data['data02'];
 				<li><a href="index.php?a=viewAuteurs&e=posts" class="passif">Auteurs</a></li>
 				<li><a href="index.php?a=viewEditions&e=posts" class="actif">Edition</a></li>
 				<li><a href="index.php?a=viewGenre&e=posts" class="passif">Genre</a></li>
-				<li><a href="index.php?a=viewEmplacement&e=posts" class="passif">Emplacement</a></li
+				<li><a href="index.php?a=viewEmplacement&e=posts" class="passif">Emplacement</a></li>
 				<li><a href="index.php?varAccesPage=connection"class="passif">Profil</a></li>
 			</ul>
 		</div>
@@ -24,39 +25,25 @@ $livres = $data['data02'];
 	<div class="contener">
 		<div class="divPrinc">
 	<h2>Genres :</h2>
-		<p id="a"><?php echo $editions['maison'];?> </p>
-		<hr/>
-		<?php 
-		if ($livres != '')
-		{
+		<?php if($oEditionId != ''){ 
+		foreach($oEditionId as $editionLibelle): ?>
+			<p><?php echo $editionLibelle['maison'];?></p>
+		<?php endforeach;
+		
+ }
+	 else {?>
+	<p>Veuillez sélectionner une maison d'édition.</p>
+	<?php } ?>
+<hr/>
+	<?php if ($livres != '' && sizeof($livres)>0)
+		{	
 			foreach($livres as $livre): ?>
-			<a href="#"><img src="<?php echo $livre['vignette'];?>"/></a>
-			<?php endforeach; } ?>	
+				<a href="<?php echo "index.php?a=viewFiche&e=posts&livresId=".$livre['id']; ?>"><img src="<?php echo $livre['vignette'];?>"/></a>
+			<?php endforeach;
+		}
+		else{
+			if($oEditionId != ''){?>
+			<p>Pas de livre encodé pour cette sélection</p>
+			<?php }} ?>	
 </div>
-	</div>
-	<div class="footer">
-		<ul>
-			<li>
-				<div class="infos">
-					<h4>Bibliothèque Oupeye <br/>(Dépos principal)</h4>
-					<p> rue Roi Albert 194 <br/> 4680 OUPEYE</p>
-					<p>Tél : 04/248.13.05</p>
-				</div>
-			</li>
-			<li>
-				<div class="infos">
-					<h4>Bibliothèque Hermée <br/>(Dépos secondaire)</h4>
-					<p> rue de Fexhe-Slins 18a  <br/> 4680 HERMÉE</p>
-					<p>Tél :04/278.00.07</p>
-				</div>
-			</li>
-			<li>
-				<div class="infos">
-					<h4>L'oiseau lire <br/>(collaborateur)</h4>
-					<p> Rue du Collège 10 <br/> 4600 VISÉ </p>
-					<p>Tél : 04/379.77.91</p>
-				</div>
-			</li>
-			<img src="./img/facebook.png"> <img src="./img/twitter.png">
-		</ul>
 	</div>

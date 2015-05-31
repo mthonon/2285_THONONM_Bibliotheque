@@ -1,6 +1,7 @@
 <?php 
 $emplacementList = $data['data'];
 $livres = $data['data02'];
+$oEmplacementId=$data['data03'];
 ?>
 	<div class="menuLongeur">
 		<div class="menuPrinc">
@@ -24,39 +25,25 @@ $livres = $data['data02'];
 	<div class="contener">
 		<div class="divPrinc">
 	<h2>Emplacement:</h2>
-		<p id="a"><?php echo $emplacement['emplacement'];?> </p>
-		<hr/>
-		<?php 
-		if ($livres != '')
-		{
+	<?php if($oEmplacementId != ''){ 
+		foreach($oEmplacementId as $emplacementLibelle): ?>
+			<p><?php echo $emplacementLibelle['emplacement'];?></p>
+		<?php endforeach;
+		
+ }
+	 else {?>
+	<p>Veuillez sélectionner un emplacement.</p>
+	<?php } ?>
+<hr/>
+	<?php if ($livres != '' && sizeof($livres)>0)
+		{	
 			foreach($livres as $livre): ?>
-			<a href="#"><img src="<?php echo $livre['vignette'];?>"/></a>
-			<?php endforeach; } ?>	
+			<a href="<?php echo "index.php?a=viewFiche&e=posts&livresId=".$livre['id']; ?>"><img src="<?php echo $livre['vignette'];?>"/></a>
+			<?php endforeach;
+		}
+		else{
+			if($oEmplacementId != ''){?>
+			<p>Pas de livre encodé pour cette sélection</p>
+			<?php }} ?>	
 </div>
-	</div>
-	<div class="footer">
-		<ul>
-			<li>
-				<div class="infos">
-					<h4>Bibliothèque Oupeye <br/>(Dépos principal)</h4>
-					<p> rue Roi Albert 194 <br/> 4680 OUPEYE</p>
-					<p>Tél : 04/248.13.05</p>
-				</div>
-			</li>
-			<li>
-				<div class="infos">
-					<h4>Bibliothèque Hermée <br/>(Dépos secondaire)</h4>
-					<p> rue de Fexhe-Slins 18a  <br/> 4680 HERMÉE</p>
-					<p>Tél :04/278.00.07</p>
-				</div>
-			</li>
-			<li>
-				<div class="infos">
-					<h4>L'oiseau lire <br/>(collaborateur)</h4>
-					<p> Rue du Collège 10 <br/> 4600 VISÉ </p>
-					<p>Tél : 04/379.77.91</p>
-				</div>
-			</li>
-			<img src="./img/facebook.png"> <img src="./img/twitter.png">
-		</ul>
 	</div>
