@@ -11,11 +11,11 @@ $oAuteurId=$data['data03'];
 				<li><a href="index.php?a=viewEditions&e=posts" class="passif">Edition</a></li>
 				<li><a href="index.php?a=viewGenre&e=posts" class="passif">Genre</a></li>
 				<li><a href="index.php?a=viewEmplacement&e=posts" class="passif">Emplacement</a></li>
-				<li><a href="index.php?varAccesPage=connection"class="passif">Profil</a></li>
+				<li><a href="index.php?a=collect&e=users"class="passif">Profil</a></li>
 			</ul>
 		</div>
 	</div>
-	<div class="menu02Genre">
+	<div class="menu2">
 		<ul>
 			<?php foreach($auteursList as $auteur): ?>
 				<li><a href="<?php echo "index.php?a=viewAuteurs&e=posts&auteursId=".$auteur['auteur']; ?>"><?php echo $auteur['auteur'];?></a></li>

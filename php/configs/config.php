@@ -2,6 +2,14 @@
 $routes['default']= 'index/posts';
 $routes['collectUsers']= 'collect/users';
 $routes['check_user'] = 'check/users';
+$routes['create_user'] = 'create/users';
+$routes['ajouter_user'] = 'ajouter/posts';
+$routes['modifier_user'] = 'modifier/posts';
+$routes['addBook_post'] = 'addBook/posts';
+$routes['ConfirmDelete_post']= 'ConfirmDelete/posts';
+$routes['deleteLivre_post']= 'deleteLivre/posts';
+$routes['update']= 'update/posts';
+$routes['updateLivre_post']= 'updateLivre/posts';
 $routes['disconnect_user'] = 'disconnect/users';
 $routes['viewGenre_post']= 'viewGenre/posts';
 $routes['viewEditions_post']= 'viewEditions/posts';

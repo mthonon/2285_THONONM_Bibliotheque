@@ -1,0 +1,330 @@
+@font-face { 
+  font-family: 'Britannic'; 
+  src: url('../BritannicBold.ttf');
+}
+@media all and (max-width: 1524px) {
+*{
+	margin: 0;
+	padding: 0;
+	font-family:'Britannic';
+	list-style: none;
+	text-decoration: none; 
+}
+.enTete{
+	background-color: black;
+	color: white;
+	padding: 10px 90px;
+}
+body{
+	background-image: url(../img/wood.jpg);
+	background-attachment: fixed;
+	
+}
+h1.titrePrinc{
+	display: inline;
+	font-size: 46px;
+}
+h1{
+	margin-bottom: 10px;
+}
+ .titrePrinc span {
+	color: #f38820;
+	padding: 90px 0;
+}
+
+
+.menuLongeur{
+	background-color: rgba(0, 0, 0, 0.65);
+}
+.menuPrinc{
+	width: 850px; 
+	margin: auto;
+	padding: 5px 0;
+}
+
+.menuPrinc li  {
+	display: inline-block;
+	font-size: 18px; 
+	width: 137px;
+	text-align: center;
+}
+
+a.passif{
+	text-decoration: none;
+	color: white;
+}
+a.actif{
+	color:  #f38820;
+	
+}
+.menuPrinc li a:hover{
+	color:  #f38820;
+} 
+
+
+.contener{
+	width: 760px;
+	background: rgba(255,255,265, 0.6);
+	margin: auto;
+	padding: 10px 41px 10px 41px;
+}
+ul.auteurMois{
+	margin-bottom: 25px;
+}
+ul.auteurMois li {
+	
+	display: inline-block;
+		
+}
+ul.auteurMois li img{
+	position: relative;
+	top: 9px;	
+
+}
+ul.auteurMois li p{
+	width: 345px;
+	font-family: helvetica,verdana,arial;
+    line-height: 24px;
+    text-align: justify;
+    margin-left: 39px;
+}
+h2{
+	margin:25px 0 10px 0;
+	font-size: 23px; 
+}
+h3{
+	margin-bottom: 15px;
+	font-size:30px;
+	color: #f38820;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0.65);
+	border-radius: 5px;
+	padding: 10px;
+
+}
+
+
+ div.menu2{
+ 	background-color: rgba(0, 0, 0, 0.65);	
+ 	padding: 20px;
+ 	top: 520px;
+ 	left: 107px;
+ 	position: absolute;
+ 	color: white;
+ 	width:802px;
+ 	text-align: center;
+ 	line-height: 20px;
+ }
+ div.menu2 ul li {
+ 	display: inline;
+ 	margin-right: 17px;
+
+ }
+div.menu2 ul li a{
+	font-size: 16px;
+	color: white;
+}
+div.menu2 ul li a:hover{
+	
+	color: #f38820;
+}
+
+.contener a img {
+	margin-right: 16px;
+	width: 106px;
+	height: 170px;
+}
+
+
+.footer{
+	padding: 25px 48px;
+    width: 746px;
+	color: white;
+	margin: auto;
+	background-color: black;
+}
+.footer ul li {
+	width: 208px;
+	display:inline-block;
+
+}
+
+.footer a img{
+	width: 50px;
+	height: 50px;
+}
+div.module{
+	background-color: rgba(0, 0, 0, 0.65);
+ 	color: white;
+ 	padding: 20px;
+ 	border-radius: 10px;
+ 	font-size: 16px;
+ 	margin-top: 10px;
+}
+div.module div.Ajouter div.InfosLivre{
+	display: inline;
+	
+
+}
+div.module div.Ajouter div.InfosLivre label{
+	display:inline;
+ 	margin-right:2px;
+
+}
+
+div.module div.Ajouter div.InfosLivre input{
+	display: inline;
+	color: black;
+	margin-right:25px;
+}
+
+div.module div.Ajouter div.InfosLivre2{
+	display: inline;
+	
+
+}
+div.module div.Ajouter div.InfosLivre2 label{
+	display:inline;
+
+}
+
+div.module div.Ajouter div.InfosLivre2 input{
+	display: inline;
+	color: black;
+	margin-top: 20px;
+	
+}
+
+div.module div.Ajouter div.InfosLivre select.infosLivre{
+	margin-right: 4px;
+}
+
+div.module div.Ajouter div.resume label{
+	display: block;
+	margin-top: 10px;
+}
+div.module div.Ajouter div.resume textarea{
+	width: 500px;
+	margin-bottom: 10px;
+}
+
+div.boutonAjout input{
+	display: inline;
+  	font-size: 18px;
+ 	border-radius: 5px;
+ 	padding: 7px;
+ 	width: 100px;
+  	position: relative;
+  	left: 610px;
+}
+div.disconnect a{
+	color: white;
+}
+div.disconnect a:hover{
+	color: orange;
+}
+div.disconnect {
+	margin: auto;
+  	width: 200px;
+ 	padding: 15px;
+  	background-color:rgba(0, 0, 0, 0.65);
+  	text-align: center;
+  	border-radius: 10px;
+  	font-size: 20px;
+}
+
+div.fiches{
+	background-color: rgba(0, 0, 0, 0.65);
+ 	color: white;
+ 	padding: 20px;
+ 	border-radius: 10px;
+ 	font-size: 16px;
+ 	margin-top: 11px;
+  	margin-bottom: 18px;
+  	padding-bottom: 20px;
+  	text-align: justify;
+  	line-height: 21px;
+}
+div.fiches a{
+	color: white;
+}
+div.fiches a:hover{
+	color: orange;
+}
+div.fiches div.img{
+	width: 108px;
+  	display: inline;
+  	float: left;
+  	margin-top: 5px;
+  	margin-right: 50px;
+}
+div.fiches div.infos {
+	width: 560px;
+  	display: inline-block;
+}
+div.fiches p.ModifDelte{
+	text-align: right;
+}
+div.fiches p.ModifDelte a{
+	margin-left: 15px;
+	font-size: 15px;
+}
+div.contener p a.suivant{
+	font-size: 16px;
+	color: black;
+	font-weight: bold;
+}
+div.contener p a.suivant:hover{
+	color: orange;
+}
+div.contener p.suivant{
+	text-align: right;
+}
+
+div.inscript input.envoyer{
+	display: inline;
+	font-size: 15px;
+	border-radius: 5px;
+	padding: 3px;
+	width: 70px;
+	margin-top: 10px;
+}
+
+div.inscript input.Connexion{
+	display: inline;
+	font-size: 15px;
+	border-radius: 5px;
+	padding: 3px;
+	width: 80px;
+	margin-top: 10px;
+
+}
+
+div.inscript label{
+	display:inline;
+ 	margin-right:5px;
+
+}
+
+div.inscript input{
+	display: inline;
+	color: black;
+	margin-right:15px;
+}
+
+input#Oui{
+	font-size: 20px;
+	border-radius: 5px;
+	padding: 3px;
+	width: 80px;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+input#Non{
+	font-size: 20px;
+	border-radius: 5px;
+	padding: 3px;
+	width: 80px;
+	margin-top: 10px;
+}
+}

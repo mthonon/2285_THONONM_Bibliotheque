@@ -9,7 +9,7 @@ $livres = $data['data'];
 				<li><a href="index.php?a=viewEditions&e=posts" class="passif">Edition</a></li>
 				<li><a href="index.php?a=viewGenre&e=posts" class="passif">Genre</a></li>
 				<li><a href="index.php?a=viewEmplacement&e=posts" class="passif">Emplacement</a></li>
-				<li><a href="index.php?varAccesPage=connection"class="passif">Profil</a></li>
+				<li><a href="index.php?a=collect&e=users"class="passif">Profil</a></li>
 			</ul>
 		</div>
 	</div>

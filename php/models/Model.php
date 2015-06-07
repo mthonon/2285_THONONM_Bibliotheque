@@ -4,7 +4,7 @@ class Model{
 	protected $connexion=null;
 	public function __construct()
 	{
-		include('db.php');
+		include('configs/db.php');
 		try 
 		{
 			$this->connexion = new \PDO(DSN, USERNAME, PASSWORD, $options);

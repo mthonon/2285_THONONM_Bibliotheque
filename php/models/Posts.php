@@ -2,17 +2,6 @@
 namespace Models;
 class Posts extends Model
 {
-	/*public public function nomFonc(){
-		
-	}*/
-	public function getlivres() {
-	$sql = 'SELECT * 
-			FROM livres  
-			ORDER BY livres.`date_create` DESC';
-	$pdost=$this-> connexion->query($sql);
-	$pdost->execute();
-	return $pdost->fetchAll();
-	}
 	public function getlivresMois() {
 		$sql = 'SELECT livres.`id`,livres.`titre`, livres.`auteur`, livres.`annee_edit`, livres.`genre_id`, livres.`maison_edit_id`, livres.`emplacement_id`, livres.`date_create`, livres.`resume`, livres.`vignette`, categories.`genre` as nom_categorie,  emplacement.`emplacement` as nom_emplacement, edition.`maison` as nom_maisonEdit
 				FROM livres  
@@ -21,6 +10,17 @@ class Posts extends Model
 				JOIN emplacement ON emplacement.`id`= livres.`emplacement_id`
 				ORDER BY livres.`id` DESC
 				LIMIT 6';
+		$pdost=$this-> connexion->query($sql);
+		$pdost->execute();
+		return $pdost->fetchAll();
+	}
+	public function getlivreshistory($wheresql) {
+		$sql = "SELECT livres.`id`,livres.`titre`, livres.`auteur`, livres.`annee_edit`, livres.`genre_id`, livres.`maison_edit_id`, livres.`emplacement_id`, livres.`date_create`, livres.`resume`, livres.`vignette`, categories.`genre` as nom_categorie,  emplacement.`emplacement` as nom_emplacement, edition.`maison` as nom_maisonEdit
+				FROM livres  
+				JOIN categories ON categories.`id`= livres.`genre_id`
+				JOIN edition ON edition.`id`= livres.`maison_edit_id`
+				JOIN emplacement ON emplacement.`id`= livres.`emplacement_id`
+				WHERE livres.`encodeur_id` =".$wheresql.' ORDER BY livres.`date_create` DESC';
 		$pdost=$this-> connexion->query($sql);
 		$pdost->execute();
 		return $pdost->fetchAll();
@@ -100,49 +100,12 @@ class Posts extends Model
 		return $pdost->fetchAll();
 	}
 
-	public function createLivre($dbConnexion, $titre, $auteur, $annee_edition, $genre, $emplacement, $maison_edition, $resume, $path2 ) {
-		$sql = 'INSERT INTO livres (titre, auteur, annee_edit, genre_id, emplacement_id, maison_edit_id, resume, vignette) VALUES(:titre, :auteur, :annee_edition, :genre, :emplacement, :maison_edition, :resume, :path2)';
-		try{
-			$res = $dbConnexion->prepare($sql);
-			$res->execute([':titre' => $titre, ':auteur' => $auteur, ':annee_edition' => $annee_edition, ':genre' => $genre, ':emplacement' => $emplacement, ':maison_edition' => $maison_edition, ':resume' => $resume, ':path2'=> $path2]);
-			} catch(PDOException $e) {
-			die($e->getMessage());
-		}
-		$titre="";
-		$auteur="";
-		$annee_edition="";
-		$genre="";
-		$emplacement="";
-		$maison_edition="";
-		$resume="";
-	}
-	public function createCompte($dbConnexion, $user, $motDP) {
-		$sql = 'INSERT INTO users (email, password) VALUES(:user, :motDP)';
-		try{
-			$res = $dbConnexion->prepare($sql);
-			$res->execute([':user' => $user, ':motDP' => $motDP]);
-		} catch(PDOException $e) {
-			die($e->getMessage());
-		}
-		$user="";
-		$motDP="";
-	}
-
-
 	public function deleteLivre($messageId) {
 		$sql = "DELETE FROM livres WHERE livres.`id` = ".$messageId;
 		$pdost=$this-> connexion->query($sql);
 		$pdost->execute();
-		return $pdost->fetchAll();
+		return;
 	}
-
-	public function updateMessage($messageId, $body, $category) {
-		$sql = 'UPDATE livres SET livres.`body` = "'.$body.'", livres.`category` = "'.$category.'" WHERE livres.`id` = '.$messageId;
-		$pdost=$this-> connexion->query($sql);
-		$pdost->execute();
-		return $pdost->fetchAll();
-	}
-
 	public function getCategories(){
 		$sql = 'SELECT categories.`id`, categories.`genre` FROM categories ORDER BY categories.`genre`';
 		$pdost=$this-> connexion->query($sql);
@@ -188,18 +151,34 @@ class Posts extends Model
 		$pdost->execute();
 		return $pdost->fetchAll();
 	}
-
-
-
-	public function getlivresId($dbConnexion,$livreid) {
-		$sql = "SELECT livres.`id`,livres.`titre`, livres.`auteur`, livres.`annee_edit`, livres.`genre_id`, livres.`maison_edit_id`, livres.`emplacement_id`, livres.`date_create`, livres.`résumé`, categories.`genre` as nom_categorie,  emplacement.`emplacement` as nom_emplacement, edition.`maison` as nom_maisonEdit
-				FROM livres  
-				JOIN categories ON categories.`id`= livres.`genre_id`
-				JOIN edition ON edition.`id`= livres.`maison_edit_id`
-				JOIN emplacement ON emplacement.`id`= livres.`emplacement_id` 
-				WHERE livres.`id` =".$livreid;
-		$res = $dbConnexion->query($sql);
-		return $res->fetchAll();
-	}
+	public function createLivre($titre, $auteur, $annee_edition, $genre, $emplacement, $maison_edition, $resume, $vignette, $encodeur ) 
+    {
+        $sql = 'INSERT INTO livres (titre, auteur, annee_edit, genre_id, emplacement_id, maison_edit_id, resume, vignette, encodeur_id) VALUES(:titre, :auteur, :annee_edition, :genre, :emplacement, :maison_edition, :resume, :vignette, :encodeur)';
+        try
+        {
+            $pdost = $this->connexion->prepare($sql);
+            $pdost->execute([':titre' => $titre, ':auteur' => $auteur, ':annee_edition' => $annee_edition, ':genre' => $genre, ':emplacement' => $emplacement, ':maison_edition' => $maison_edition, ':resume' => $resume, ':vignette'=> $vignette, ':encodeur'=> $encodeur ]);
+            return true;
+        } 
+        catch(PDOException $e) 
+        {
+            return false;
+        }
+    }
+    public function updateLivre($livreid, $titre, $auteur, $annee_edition, $genre, $emplacement, $maison_edition, $resume, $vignette, $encodeur ) 
+    {
+        $sql = 'UPDATE livres SET titre = "'.$titre.'", auteur = "'.$auteur.'", annee_edit = '.$annee_edition.', genre_id = '.$genre.', emplacement_id = '.$emplacement.', maison_edit_id = '.$maison_edition.', resume = "'.$resume.'", vignette = "'.$vignette.'", encodeur_id = '.$encodeur.' WHERE id = '.$livreid;
+        $pdost=$this-> connexion->query($sql);
+        $pdost->execute();
+        return;
+    }
+    public function updateLivrewithoutimg($livreid, $titre, $auteur, $annee_edition, $genre, $emplacement, $maison_edition, $resume,  $encodeur ) 
+    {
+        $sql = 'UPDATE livres SET titre = "'.$titre.'", auteur = "'.$auteur.'", annee_edit = '.$annee_edition.', genre_id = '.$genre.', emplacement_id = '.$emplacement.', maison_edit_id = '.$maison_edition.', resume = "'.$resume.'", encodeur_id = '.$encodeur.' WHERE id = '.$livreid;
+        $pdost=$this-> connexion->query($sql);
+        $pdost->execute();
+        return;
+    }
 
 }
+
